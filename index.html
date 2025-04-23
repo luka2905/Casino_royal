@@ -32,6 +32,33 @@
     </form>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Form Submission Handler
+    document.getElementById('age-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const ageRadio = document.querySelector('input[name="age"]:checked');
+      const nickname = document.getElementById('nickname').value;
+
+      if (!ageRadio || !nickname) {
+        alert("Bitte fülle alle Felder aus.");
+        return;
+      }
+
+      const ageVerified = ageRadio.value === 'yes';
+
+      if (!ageVerified) {
+        alert("Du musst mindestens 18 Jahre alt sein, um zu spielen.");
+        return;
+      }
+
+      // Speichere den Nickname in localStorage
+      localStorage.setItem('nickname', nickname);
+
+      // Weiterleitung zur nächsten Seite (z.B. Spiele-Auswahl)
+      window.location.href = 'games.html'; // Die Spiele-Seite
+    });
+  </script>
+  
 </body>
 </html>
