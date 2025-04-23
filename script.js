@@ -38,7 +38,21 @@ function startGame(game) {
   }
 }
 
-// Funktion, um den Vollbildmodus ein- oder auszuschalten
+// Funktion, um in den Vollbildmodus zu wechseln
+function enterFullscreen() {
+  const el = document.documentElement;
+  if (el.requestFullscreen) {
+    el.requestFullscreen();
+  } else if (el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  } else if (el.mozRequestFullScreen) {
+    el.mozRequestFullScreen();
+  } else if (el.msRequestFullscreen) {
+    el.msRequestFullscreen();
+  }
+}
+
+// Funktion zum Wechseln zwischen Vollbildmodus ein-/ausschalten
 function toggleFullscreen() {
   if (document.fullscreenElement) {
     document.exitFullscreen();
