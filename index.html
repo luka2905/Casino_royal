@@ -1,11 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Casino Royal</title>
-
-  <!-- Google Analytics -->
+  <link rel="stylesheet" href="style.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHCJHLNS56"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,8 +13,6 @@
     gtag('js', new Date());
     gtag('config', 'G-MHCJHLNS56');
   </script>
-
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="welcome-container" id="welcome">
@@ -25,10 +23,9 @@
       <button onclick="denyAccess()">Nein</button>
     </div>
 
-    <div id="nickname-section" style="display: none; margin-top: 2rem;">
-      <label for="nickname">Gib deinen Nickname ein:</label><br/>
+    <div id="nickname-section" style="display: none;">
+      <label for="nickname">Gib deinen Nickname ein:</label>
       <input type="text" id="nickname" placeholder="Nickname" />
-      <br/><br/>
       <button onclick="enterCasino()">Betreten</button>
     </div>
   </div>
@@ -55,26 +52,6 @@
     </div>
   </div>
 
-  <script>
-    function showNicknameInput() {
-      document.getElementById("nickname-section").style.display = "block";
-    }
-
-    function denyAccess() {
-      alert("Du musst mindestens 18 Jahre alt sein, um diese Website zu betreten.");
-    }
-
-    function enterCasino() {
-      const nickname = document.getElementById("nickname").value.trim();
-      if (nickname === "") {
-        alert("Bitte gib deinen Nickname ein.");
-        return;
-      }
-
-      document.getElementById("welcome").style.display = "none";
-      document.getElementById("casino").style.display = "block";
-      document.getElementById("user-nickname").textContent = nickname;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

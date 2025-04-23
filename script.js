@@ -1,17 +1,20 @@
-function checkAge(isOver18) {
-  if (!isOver18) {
-    alert("Du musst über 18 Jahre alt sein, um zu spielen.");
-    return;
-  }
-  document.getElementById('nickname-section').classList.remove('hidden');
+
+function showNicknameInput() {
+  document.getElementById("nickname-section").style.display = "block";
 }
 
-function startGame() {
-  const name = document.getElementById('nickname').value.trim();
-  if (name === '') {
-    alert("Bitte gib einen Nickname ein.");
+function denyAccess() {
+  alert("Du musst mindestens 18 Jahre alt sein, um diese Website zu betreten.");
+}
+
+function enterCasino() {
+  const nickname = document.getElementById("nickname").value.trim();
+  if (nickname === "") {
+    alert("Bitte gib deinen Nickname ein.");
     return;
   }
-  localStorage.setItem('nickname', name);
-  window.location.href = 'games.html';
+
+  document.getElementById("welcome").style.display = "none";
+  document.getElementById("casino").style.display = "block";
+  document.getElementById("user-nickname").textContent = nickname;
 }
