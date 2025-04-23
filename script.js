@@ -22,6 +22,7 @@ function enterFullscreen() {
     el.msRequestFullscreen();
   }
 }
+
 // Funktion, die aufgerufen wird, wenn das Spiel gestartet wird
 function startGame(game) {
   // Überprüfen, ob der Nickname verfügbar ist
@@ -35,8 +36,6 @@ function startGame(game) {
     // Falls kein Nickname gefunden wurde, zurück zur Startseite
     window.location.href = 'index.html';
   }
-}
-
 }
 
 // Funktion, um den Vollbildmodus ein- oder auszuschalten
