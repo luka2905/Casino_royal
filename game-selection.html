@@ -30,15 +30,30 @@
   </div>
 
   <script>
-    // Nickname beim Laden der Seite anzeigen
-    const nickname = new URLSearchParams(window.location.search).get('nickname');
-    if (nickname) {
+    // Versuchen, den Nickname aus der URL zu holen
+    const urlParams = new URLSearchParams(window.location.search);
+    const nickname = urlParams.get('nickname');
+
+    // Falls der Nickname nicht in der URL ist, auf die Startseite umleiten
+    if (!nickname) {
+      window.location.href = 'index.html'; // Zurück zur Startseite, wenn kein Nickname vorhanden
+    } else {
+      // Nickname im lokalen Speicher speichern
+      localStorage.setItem('nickname', nickname);
+      // Nickname im Header anzeigen
       document.getElementById('greeting').textContent = `Wähle ein Spiel, ${nickname}`;
     }
 
     // Spiel starten
     function startGame(gameName) {
-      window.location.href = `game.html?game=${gameName}&nickname=${encodeURIComponent(nickname)}`;
+      // Nickname aus lokalem Speicher holen
+      const nickname = localStorage.getItem('nickname');
+      // Weiterleitung zur Spielseite mit Spielname und Nickname
+      if (nickname) {
+        window.location.href = `game.html?game=${gameName}&nickname=${encodeURIComponent(nickname)}`;
+      } else {
+        alert("Fehler: Nickname nicht gefunden.");
+      }
     }
   </script>
 </body>
