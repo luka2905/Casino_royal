@@ -3,57 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casino - Spiel</title>
-  <script src="script.js" defer></script>
+  <title>Casino - Spiele Auswahl</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 id="game-heading"></h1>
-  <button onclick="toggleFullscreen()">Vollbild ein-/ausschalten</button>
-  <div id="game-area">
-    <p>Spiel läuft...</p>
-    <!-- Hier wird das Spiel geladen -->
+  <div class="games-container">
+    <h1 id="greeting">Wähle ein Spiel</h1>
+
+    <div class="game">
+      <img src="slots-image.jpg" alt="Slots">
+      <h2>🎰 Slots</h2>
+      <button onclick="startGame('slots')">Spielen</button>
+    </div>
+
+    <div class="game">
+      <img src="blackjack-image.jpg" alt="Blackjack">
+      <h2>🃏 Blackjack</h2>
+      <button onclick="startGame('blackjack')">Spielen</button>
+    </div>
+
+    <div class="game">
+      <img src="roulette-image.jpg" alt="Roulette">
+      <h2>🎯 Roulette</h2>
+      <button onclick="startGame('roulette')">Spielen</button>
+    </div>
   </div>
 
   <script>
-    // Funktion zum Laden der Spielparameter aus der URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const game = urlParams.get('game');
-    const nickname = urlParams.get('nickname');
-
-    if (game && nickname) {
-      // Spiel- und Nickname anzeigen
-      document.getElementById('game-heading').innerHTML = `Willkommen, ${nickname}! Du spielst ${game}.`;
-
-      // Hier kannst du Logik hinzufügen, um das spezifische Spiel zu laden (z.B. Slots, Blackjack etc.)
-      loadGame(game);
-    } else {
-      // Fehlerbehandlung, falls keine Spielparameter vorhanden sind
-      document.getElementById('game-area').innerHTML = '<p>Spiel konnte nicht geladen werden.</p>';
+    const nickname = new URLSearchParams(window.location.search).get('nickname');
+    if (nickname) {
+      document.getElementById('greeting').textContent = `Wähle ein Spiel, ${nickname}`;
     }
 
-    // Funktion zum Laden des Spiels
-    function loadGame(gameName) {
-      const gameArea = document.getElementById('game-area');
-      switch (gameName) {
-        case 'slots':
-          gameArea.innerHTML = '<p>Slots-Spiel wird geladen...</p>';
-          // Hier deine Slots-Logik einfügen
-          break;
-        case 'blackjack':
-          gameArea.innerHTML = '<p>Blackjack-Spiel wird geladen...</p>';
-          // Hier deine Blackjack-Logik einfügen
-          break;
-        case 'roulette':
-          gameArea.innerHTML = '<p>Roulette-Spiel wird geladen...</p>';
-          // Hier deine Roulette-Logik einfügen
-          break;
-        default:
-          gameArea.innerHTML = '<p>Unbekanntes Spiel.</p>';
-          break;
-      }
+    function startGame(game) {
+      window.location.href = `game.html?game=${game}&nickname=${encodeURIComponent(nickname)}`;
     }
   </script>
 </body>
 </html>
-
