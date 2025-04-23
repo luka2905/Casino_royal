@@ -19,7 +19,7 @@
 </head>
 <body>
   <div class="games-container">
-    <h1>Wähle ein Spiel, {{nickname}}</h1>
+    <h1>Wähle ein Spiel, <span id="nickname-placeholder"></span></h1>
     <div class="game" id="slots">
       <img src="slots-image.jpg" alt="Slots" class="game-image">
       <h2>Slots</h2>
@@ -37,6 +37,20 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Nickname aus dem localStorage holen und in die Seite einfügen
+    const nickname = localStorage.getItem('nickname');
+    if (nickname) {
+      document.getElementById('nickname-placeholder').textContent = nickname;
+    } else {
+      document.getElementById('nickname-placeholder').textContent = "Gast";
+    }
+
+    function startGame(game) {
+      // Hier kannst du die Logik für das Spiel starten einfügen.
+      alert('Spiel gestartet: ' + game);
+    }
+  </script>
+  
 </body>
 </html>
