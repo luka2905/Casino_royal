@@ -36,6 +36,9 @@
         return;
       }
 
+      // Nickname im localStorage speichern
+      localStorage.setItem('nickname', nickname);
+
       // Weiterleitung zur Spiele-Seite mit Nickname in der URL
       window.location.href = `game-selection.html?nickname=${encodeURIComponent(nickname)}`;
     });
