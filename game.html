@@ -4,54 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casino - Spiel</title>
-  
-  <!-- Google Analytics Code -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHCJHLNS56"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    
-    gtag('config', 'G-MHCJHLNS56');
-  </script>
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="game-area">
-    <h1>Spiel läuft...</h1>
-    <button class="fullscreen" onclick="toggleFullscreen()">Vollbild ein-/ausschalten</button>
+    <h1 id="game-title">Spiel wird geladen...</h1>
+    <button class="fullscreen" onclick="toggleFullscreen()">🔲 Vollbild</button>
   </div>
 
   <script>
-    // Funktion zum Umschalten des Vollbildmodus
+    // Spielname & Nickname aus der URL holen
+    const params = new URLSearchParams(window.location.search);
+    const game = params.get('game');
+    const nickname = params.get('nickname');
+
+    // Titel aktualisieren
+    const titleElement = document.getElementById('game-title');
+    if (game && nickname) {
+      const gameNameFormatted = {
+        slots: "🎰 Slots",
+        blackjack: "🃏 Blackjack",
+        roulette: "🎯 Roulette"
+      }[game] || game;
+
+      titleElement.textContent = `${nickname}, du spielst jetzt ${gameNameFormatted}`;
+    } else {
+      titleElement.textContent = "Spiel konnte nicht geladen werden.";
+    }
+
+    // Vollbildfunktion
     function toggleFullscreen() {
+      const elem = document.documentElement;
       if (!document.fullscreenElement) {
-        // Wenn noch kein Vollbild aktiv ist, gehe in den Vollbildmodus
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen();
-        } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-          document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari und Opera
-          document.documentElement.webkitRequestFullscreen();
-        } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-          document.documentElement.msRequestFullscreen();
-        }
+        elem.requestFullscreen();
       } else {
-        // Wenn Vollbild aktiv ist, verlasse den Vollbildmodus
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { // Firefox
-          document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { // Chrome, Safari und Opera
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { // IE/Edge
-          document.msExitFullscreen();
-        }
+        document.exitFullscreen();
       }
     }
   </script>
-  
 </body>
 </html>
-
