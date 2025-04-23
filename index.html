@@ -1,122 +1,37 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Casino Royal</title>
-
-  <!-- Google Analytics -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casino - Altersabfrage</title>
+  
+  <!-- Google Analytics Code -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHCJHLNS56"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    
     gtag('config', 'G-MHCJHLNS56');
   </script>
-
-  <link rel="stylesheet" href="style.css" />
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="welcome-container" id="welcome">
-    <h1>Willkommen im Casino Royal 🎰</h1>
-    <p>Bist du 18 Jahre oder älter?</p>
-    <div class="age-buttons">
-      <button onclick="showNicknameInput()">Ja</button>
-      <button onclick="denyAccess()">Nein</button>
-    </div>
+  <div class="start-container">
+    <h1>Willkommen im Casino!</h1>
+    <form id="age-form">
+      <label for="age">Bist du über 18 Jahre alt?</label><br>
+      <input type="radio" name="age" value="yes" required> Ja
+      <input type="radio" name="age" value="no" required> Nein<br><br>
 
-    <div id="nickname-section" style="display: none; margin-top: 2rem;">
-      <label for="nickname">Gib deinen Nickname ein:</label><br/>
-      <input type="text" id="nickname" placeholder="Nickname" />
-      <br/><br/>
-      <button onclick="enterCasino()">Betreten</button>
-    </div>
+      <label for="nickname">Dein Nickname:</label>
+      <input type="text" id="nickname" name="nickname" required><br><br>
+
+      <button type="submit">Starten</button>
+    </form>
   </div>
 
-  <div id="casino" style="display: none;">
-    <h1>Willkommen, <span id="user-nickname"></span> 🎉</h1>
-    <h2>Wähle dein Spiel</h2>
-    <div class="games-grid">
-      <div class="game-card">
-        <img src="images/slots.jpg" alt="Slots" />
-        <h3>🎰 Slots</h3>
-        <button onclick="showGame('slots')">Spielen</button>
-      </div>
-      <div class="game-card">
-        <img src="images/blackjack.jpg" alt="Blackjack" />
-        <h3>🃏 Blackjack</h3>
-        <button onclick="showGame('blackjack')">Spielen</button>
-      </div>
-      <div class="game-card">
-        <img src="images/roulette.jpg" alt="Roulette" />
-        <h3>🎯 Roulette</h3>
-        <button onclick="showGame('roulette')">Spielen</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="game-screen" style="display:none; margin-top: 2rem;">
-    <h2 id="game-title"></h2>
-    <div id="game-content"></div>
-    <br>
-    <button onclick="goBack()">Zurück zur Auswahl</button>
-  </div>
-
-  <script>
-    function showNicknameInput() {
-      document.getElementById("nickname-section").style.display = "block";
-    }
-
-    function denyAccess() {
-      alert("Du musst mindestens 18 Jahre alt sein, um diese Website zu betreten.");
-    }
-
-    function enterCasino() {
-      const nickname = document.getElementById("nickname").value.trim();
-      if (nickname === "") {
-        alert("Bitte gib deinen Nickname ein.");
-        return;
-      }
-
-      document.getElementById("welcome").style.display = "none";
-      document.getElementById("casino").style.display = "block";
-      document.getElementById("user-nickname").textContent = nickname;
-    }
-
-    function showGame(game) {
-      document.getElementById("casino").style.display = "none";
-      document.getElementById("game-screen").style.display = "block";
-      document.getElementById("game-title").innerText = game.toUpperCase();
-
-      const content = document.getElementById("game-content");
-      if (game === 'slots') {
-        content.innerHTML = `
-          <p>Klicke den Button und drehe den Slot!</p>
-          <button onclick="spinSlot()">🎰 Drehen</button>
-          <p id="slot-result"></p>
-        `;
-      } else if (game === 'blackjack') {
-        content.innerHTML = `<p>Blackjack kommt bald 🃏</p>`;
-      } else if (game === 'roulette') {
-        content.innerHTML = `<p>Roulette kommt bald 🎯</p>`;
-      }
-    }
-
-    function spinSlot() {
-      const symbols = ['🍒', '🍋', '🔔', '⭐', '7️⃣'];
-      let result = [];
-      for (let i = 0; i < 3; i++) {
-        const rand = Math.floor(Math.random() * symbols.length);
-        result.push(symbols[rand]);
-      }
-      document.getElementById("slot-result").innerText = result.join(" | ");
-    }
-
-    function goBack() {
-      document.getElementById("game-screen").style.display = "none";
-      document.getElementById("casino").style.display = "block";
-    }
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
