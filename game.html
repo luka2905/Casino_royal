@@ -27,16 +27,45 @@
       // Hier könntest du Logik hinzufügen, um das ausgewählte Spiel zu laden (z.B. Slots, Blackjack etc.)
       // Beispiel: 
       if (game === 'slots') {
-        // Lade das Slots-Spiel
+        loadSlotsGame();
       } else if (game === 'blackjack') {
-        // Lade das Blackjack-Spiel
+        loadBlackjackGame();
       } else if (game === 'roulette') {
-        // Lade das Roulette-Spiel
+        loadRouletteGame();
+      } else {
+        // Fehlerbehandlung, falls das Spiel unbekannt ist
+        document.getElementById('game-area').innerHTML = '<p>Das angeforderte Spiel ist nicht verfügbar.</p>';
       }
     } else {
       // Fehlerbehandlung, falls keine Spielparameter vorhanden sind
       document.getElementById('game-area').innerHTML = '<p>Spiel konnte nicht geladen werden.</p>';
     }
+
+    // Funktion für Vollbildmodus ein-/ausschalten
+    function toggleFullscreen() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen();
+      }
+    }
+
+    // Beispielmethoden zum Laden der Spiele (Platzhalter, um später die Spiele zu integrieren)
+    function loadSlotsGame() {
+      document.getElementById('game-area').innerHTML = '<p>Slots-Spiel wird geladen...</p>';
+      // Hier könnte die Slots-Spiel-Logik hinzukommen
+    }
+
+    function loadBlackjackGame() {
+      document.getElementById('game-area').innerHTML = '<p>Blackjack-Spiel wird geladen...</p>';
+      // Hier könnte die Blackjack-Spiel-Logik hinzukommen
+    }
+
+    function loadRouletteGame() {
+      document.getElementById('game-area').innerHTML = '<p>Roulette-Spiel wird geladen...</p>';
+      // Hier könnte die Roulette-Spiel-Logik hinzukommen
+    }
   </script>
 </body>
 </html>
+
