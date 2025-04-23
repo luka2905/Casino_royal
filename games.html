@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casino - Spiele Auswahl</title>
+  
+  <!-- Google Analytics Code -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHCJHLNS56"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-MHCJHLNS56');
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="games-container">
+    <h1>Wähle ein Spiel, {{nickname}}</h1>
+    <div class="game" id="slots">
+      <img src="slots-image.jpg" alt="Slots" class="game-image">
+      <h2>Slots</h2>
+      <button onclick="startGame('slots')">Spielen</button>
+    </div>
+    <div class="game" id="blackjack">
+      <img src="blackjack-image.jpg" alt="Blackjack" class="game-image">
+      <h2>Blackjack</h2>
+      <button onclick="startGame('blackjack')">Spielen</button>
+    </div>
+    <div class="game" id="roulette">
+      <img src="roulette-image.jpg" alt="Roulette" class="game-image">
+      <h2>Roulette</h2>
+      <button onclick="startGame('roulette')">Spielen</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
