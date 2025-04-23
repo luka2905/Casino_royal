@@ -4,42 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casino - Spiel</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <h1 id="game-heading"></h1>
+  <button onclick="toggleFullscreen()">Vollbild ein-/ausschalten</button>
   <div id="game-area">
-    <h1 id="game-title">Spiel wird geladen...</h1>
-    <button class="fullscreen" onclick="toggleFullscreen()">🔲 Vollbild</button>
+    <p>Spiel läuft...</p>
+    <!-- Hier wird das Spiel geladen -->
   </div>
 
   <script>
-    // Spielname & Nickname aus der URL holen
-    const params = new URLSearchParams(window.location.search);
-    const game = params.get('game');
-    const nickname = params.get('nickname');
+    // Funktion zum Laden der Spielparameter aus der URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const game = urlParams.get('game');
+    const nickname = urlParams.get('nickname');
 
-    // Titel aktualisieren
-    const titleElement = document.getElementById('game-title');
     if (game && nickname) {
-      const gameNameFormatted = {
-        slots: "🎰 Slots",
-        blackjack: "🃏 Blackjack",
-        roulette: "🎯 Roulette"
-      }[game] || game;
+      // Spiel- und Nickname anzeigen
+      document.getElementById('game-heading').innerHTML = `Willkommen, ${nickname}! Du spielst ${game}.`;
 
-      titleElement.textContent = `${nickname}, du spielst jetzt ${gameNameFormatted}`;
-    } else {
-      titleElement.textContent = "Spiel konnte nicht geladen werden.";
-    }
-
-    // Vollbildfunktion
-    function toggleFullscreen() {
-      const elem = document.documentElement;
-      if (!document.fullscreenElement) {
-        elem.requestFullscreen();
-      } else {
-        document.exitFullscreen();
+      // Hier könntest du Logik hinzufügen, um das ausgewählte Spiel zu laden (z.B. Slots, Blackjack etc.)
+      // Beispiel: 
+      if (game === 'slots') {
+        // Lade das Slots-Spiel
+      } else if (game === 'blackjack') {
+        // Lade das Blackjack-Spiel
+      } else if (game === 'roulette') {
+        // Lade das Roulette-Spiel
       }
+    } else {
+      // Fehlerbehandlung, falls keine Spielparameter vorhanden sind
+      document.getElementById('game-area').innerHTML = '<p>Spiel konnte nicht geladen werden.</p>';
     }
   </script>
 </body>
