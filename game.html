@@ -23,6 +23,35 @@
     <button class="fullscreen" onclick="toggleFullscreen()">Vollbild ein-/ausschalten</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Funktion zum Umschalten des Vollbildmodus
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        // Wenn noch kein Vollbild aktiv ist, gehe in den Vollbildmodus
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari und Opera
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+          document.documentElement.msRequestFullscreen();
+        }
+      } else {
+        // Wenn Vollbild aktiv ist, verlasse den Vollbildmodus
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari und Opera
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+          document.msExitFullscreen();
+        }
+      }
+    }
+  </script>
+  
 </body>
 </html>
+
