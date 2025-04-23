@@ -22,13 +22,21 @@ function enterFullscreen() {
     el.msRequestFullscreen();
   }
 }
-
 // Funktion, die aufgerufen wird, wenn das Spiel gestartet wird
 function startGame(game) {
-  // Vollbildmodus aktivieren
-  enterFullscreen();
-  // Weiterleitung zur Spielseite mit dem ausgewählten Spiel und Nickname
-  window.location.href = `game.html?game=${game}&nickname=${encodeURIComponent(nickname)}`;
+  // Überprüfen, ob der Nickname verfügbar ist
+  const nickname = localStorage.getItem('nickname');
+  if (nickname) {
+    // Vollbildmodus aktivieren
+    enterFullscreen();
+    // Weiterleitung zur Spielseite mit dem ausgewählten Spiel und Nickname
+    window.location.href = `game.html?game=${game}&nickname=${encodeURIComponent(nickname)}`;
+  } else {
+    // Falls kein Nickname gefunden wurde, zurück zur Startseite
+    window.location.href = 'index.html';
+  }
+}
+
 }
 
 // Funktion, um den Vollbildmodus ein- oder auszuschalten
