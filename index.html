@@ -3,23 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Casino Royal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Casino Royal – Start</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="start-container">
-    <h1>🎰 Willkommen bei <span>Casino Royal</span></h1>
+    <h1>🎰 Willkommen im Casino Royal</h1>
     <form id="age-form">
       <p>Bist du über 18 Jahre alt?</p>
-      <label><input type="radio" name="age" value="yes" required> Ja</label>
-      <label><input type="radio" name="age" value="no" required> Nein</label>
+      <label><input type="radio" name="age" value="yes" required /> Ja</label>
+      <label><input type="radio" name="age" value="no" required /> Nein</label>
 
       <input type="text" id="nickname" placeholder="Dein Nickname" required />
       <button type="submit">Betreten</button>
     </form>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('age-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const age = document.querySelector('input[name="age"]:checked')?.value;
+      const nickname = document.getElementById('nickname').value.trim();
+
+      if (age === 'no') {
+        alert('Du musst über 18 Jahre alt sein, um das Casino zu betreten!');
+        return;
+      }
+
+      if (nickname === '') {
+        alert('Bitte gib deinen Nickname ein.');
+        return;
+      }
+
+      // Weiterleitung zur Spiele-Seite mit Nickname in der URL
+      window.location.href = `game-selection.html?nickname=${encodeURIComponent(nickname)}`;
+    });
+  </script>
 </body>
 </html>
