@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casino - Spiel</title>
   <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1 id="game-heading"></h1>
@@ -24,46 +25,33 @@
       // Spiel- und Nickname anzeigen
       document.getElementById('game-heading').innerHTML = `Willkommen, ${nickname}! Du spielst ${game}.`;
 
-      // Hier könntest du Logik hinzufügen, um das ausgewählte Spiel zu laden (z.B. Slots, Blackjack etc.)
-      // Beispiel: 
-      if (game === 'slots') {
-        loadSlotsGame();
-      } else if (game === 'blackjack') {
-        loadBlackjackGame();
-      } else if (game === 'roulette') {
-        loadRouletteGame();
-      } else {
-        // Fehlerbehandlung, falls das Spiel unbekannt ist
-        document.getElementById('game-area').innerHTML = '<p>Das angeforderte Spiel ist nicht verfügbar.</p>';
-      }
+      // Hier kannst du Logik hinzufügen, um das spezifische Spiel zu laden (z.B. Slots, Blackjack etc.)
+      loadGame(game);
     } else {
       // Fehlerbehandlung, falls keine Spielparameter vorhanden sind
       document.getElementById('game-area').innerHTML = '<p>Spiel konnte nicht geladen werden.</p>';
     }
 
-    // Funktion für Vollbildmodus ein-/ausschalten
-    function toggleFullscreen() {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        document.documentElement.requestFullscreen();
+    // Funktion zum Laden des Spiels
+    function loadGame(gameName) {
+      const gameArea = document.getElementById('game-area');
+      switch (gameName) {
+        case 'slots':
+          gameArea.innerHTML = '<p>Slots-Spiel wird geladen...</p>';
+          // Hier deine Slots-Logik einfügen
+          break;
+        case 'blackjack':
+          gameArea.innerHTML = '<p>Blackjack-Spiel wird geladen...</p>';
+          // Hier deine Blackjack-Logik einfügen
+          break;
+        case 'roulette':
+          gameArea.innerHTML = '<p>Roulette-Spiel wird geladen...</p>';
+          // Hier deine Roulette-Logik einfügen
+          break;
+        default:
+          gameArea.innerHTML = '<p>Unbekanntes Spiel.</p>';
+          break;
       }
-    }
-
-    // Beispielmethoden zum Laden der Spiele (Platzhalter, um später die Spiele zu integrieren)
-    function loadSlotsGame() {
-      document.getElementById('game-area').innerHTML = '<p>Slots-Spiel wird geladen...</p>';
-      // Hier könnte die Slots-Spiel-Logik hinzukommen
-    }
-
-    function loadBlackjackGame() {
-      document.getElementById('game-area').innerHTML = '<p>Blackjack-Spiel wird geladen...</p>';
-      // Hier könnte die Blackjack-Spiel-Logik hinzukommen
-    }
-
-    function loadRouletteGame() {
-      document.getElementById('game-area').innerHTML = '<p>Roulette-Spiel wird geladen...</p>';
-      // Hier könnte die Roulette-Spiel-Logik hinzukommen
     }
   </script>
 </body>
