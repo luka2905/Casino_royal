@@ -1,27 +1,81 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Willkommen im Casino</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casino Royal</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHCJHLNS56"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MHCJHLNS56');
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>🎰 Willkommen im Casino Royale</h1>
-    <p>Bitte bestätige dein Alter:</p>
-    
-    <div class="age-check">
-      <button onclick="checkAge(true)">✅ Ich bin über 18</button>
-      <button onclick="checkAge(false)">❌ Unter 18</button>
+  <div class="welcome-container" id="welcome">
+    <h1>Willkommen im Casino Royal 🎰</h1>
+    <p>Bist du 18 Jahre oder älter?</p>
+    <div class="age-buttons">
+      <button onclick="showNicknameInput()">Ja</button>
+      <button onclick="denyAccess()">Nein</button>
     </div>
 
-    <div id="nickname-section" class="hidden">
-      <input type="text" id="nickname" placeholder="Gib deinen Nickname ein">
-      <button onclick="startGame()">🎮 Starten</button>
+    <div id="nickname-section" style="display: none; margin-top: 2rem;">
+      <label for="nickname">Gib deinen Nickname ein:</label><br/>
+      <input type="text" id="nickname" placeholder="Nickname" />
+      <br/><br/>
+      <button onclick="enterCasino()">Betreten</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <div id="casino" style="display: none;">
+    <h1>Willkommen, <span id="user-nickname"></span> 🎉</h1>
+    <h2>Wähle dein Spiel</h2>
+    <div class="games-grid">
+      <div class="game-card">
+        <img src="images/slots.jpg" alt="Slots" />
+        <h3>🎰 Slots</h3>
+        <button>Spielen</button>
+      </div>
+      <div class="game-card">
+        <img src="images/blackjack.jpg" alt="Blackjack" />
+        <h3>🃏 Blackjack</h3>
+        <button>Spielen</button>
+      </div>
+      <div class="game-card">
+        <img src="images/roulette.jpg" alt="Roulette" />
+        <h3>🎯 Roulette</h3>
+        <button>Spielen</button>
+      </div>
+      <!-- Weitere Spiele hier -->
+    </div>
+  </div>
+
+  <script>
+    function showNicknameInput() {
+      document.getElementById("nickname-section").style.display = "block";
+    }
+
+    function denyAccess() {
+      alert("Du musst mindestens 18 Jahre alt sein, um diese Website zu betreten.");
+    }
+
+    function enterCasino() {
+      const nickname = document.getElementById("nickname").value.trim();
+      if (nickname === "") {
+        alert("Bitte gib deinen Nickname ein.");
+        return;
+      }
+
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("casino").style.display = "block";
+      document.getElementById("user-nickname").textContent = nickname;
+    }
+  </script>
 </body>
 </html>
