@@ -46,11 +46,15 @@
       document.getElementById('nickname-placeholder').textContent = "Gast";
     }
 
+    // Funktion, um das Spiel zu starten und zur entsprechenden Seite zu wechseln
     function startGame(game) {
-      // Hier kannst du die Logik für das Spiel starten einfügen.
-      alert('Spiel gestartet: ' + game);
+      if (nickname) {
+        // Weiterleitung zur Spielseite mit den Spiel- und Nickname-Parametern
+        window.location.href = `game.html?game=${game}&nickname=${encodeURIComponent(nickname)}`;
+      } else {
+        alert("Bitte gib deinen Nickname ein, um zu spielen.");
+      }
     }
   </script>
-  
 </body>
 </html>
