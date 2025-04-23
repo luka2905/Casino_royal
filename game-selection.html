@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casino - Spiele Auswahl</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="games-container">
+    <h1>Wähle ein Spiel</h1>
+
+    <div class="game">
+      <img src="slots-image.jpg" alt="Slots">
+      <h2>🎰 Slots</h2>
+      <button onclick="startGame('slots')">Spielen</button>
+    </div>
+
+    <div class="game">
+      <img src="blackjack-image.jpg" alt="Blackjack">
+      <h2>🃏 Blackjack</h2>
+      <button onclick="startGame('blackjack')">Spielen</button>
+    </div>
+
+    <div class="game">
+      <img src="roulette-image.jpg" alt="Roulette">
+      <h2>🎯 Roulette</h2>
+      <button onclick="startGame('roulette')">Spielen</button>
+    </div>
+  </div>
+
+  <script>
+    function startGame(gameName) {
+      // Beispielhafte Weiterleitung zur Spielseite
+      window.location.href = `game.html?game=${gameName}`;
+    }
+  </script>
+</body>
+</html>
