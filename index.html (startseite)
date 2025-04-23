@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willkommen im Casino</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎰 Willkommen im Casino Royale</h1>
+    <p>Bitte bestätige dein Alter:</p>
+    
+    <div class="age-check">
+      <button onclick="checkAge(true)">✅ Ich bin über 18</button>
+      <button onclick="checkAge(false)">❌ Unter 18</button>
+    </div>
+
+    <div id="nickname-section" class="hidden">
+      <input type="text" id="nickname" placeholder="Gib deinen Nickname ein">
+      <button onclick="startGame()">🎮 Starten</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
