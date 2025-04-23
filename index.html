@@ -1,64 +1,25 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casino - Altersabfrage</title>
-  
-  <!-- Google Analytics Code -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHCJHLNS56"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    
-    gtag('config', 'G-MHCJHLNS56');
-  </script>
-  
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casino Royal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="start-container">
-    <h1>Willkommen im Casino!</h1>
+    <h1>🎰 Willkommen bei <span>Casino Royal</span></h1>
     <form id="age-form">
-      <label for="age">Bist du über 18 Jahre alt?</label><br>
-      <input type="radio" name="age" value="yes" required> Ja
-      <input type="radio" name="age" value="no" required> Nein<br><br>
+      <p>Bist du über 18 Jahre alt?</p>
+      <label><input type="radio" name="age" value="yes" required> Ja</label>
+      <label><input type="radio" name="age" value="no" required> Nein</label>
 
-      <label for="nickname">Dein Nickname:</label>
-      <input type="text" id="nickname" name="nickname" required><br><br>
-
-      <button type="submit">Starten</button>
+      <input type="text" id="nickname" placeholder="Dein Nickname" required />
+      <button type="submit">Betreten</button>
     </form>
   </div>
 
-  <script>
-    // Form Submission Handler
-    document.getElementById('age-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const ageRadio = document.querySelector('input[name="age"]:checked');
-      const nickname = document.getElementById('nickname').value;
-
-      if (!ageRadio || !nickname) {
-        alert("Bitte fülle alle Felder aus.");
-        return;
-      }
-
-      const ageVerified = ageRadio.value === 'yes';
-
-      if (!ageVerified) {
-        alert("Du musst mindestens 18 Jahre alt sein, um zu spielen.");
-        return;
-      }
-
-      // Speichere den Nickname in localStorage
-      localStorage.setItem('nickname', nickname);
-
-      // Weiterleitung zur nächsten Seite (z.B. Spiele-Auswahl)
-      window.location.href = 'games.html'; // Die Spiele-Seite
-    });
-  </script>
-  
+  <script src="script.js"></script>
 </body>
 </html>
