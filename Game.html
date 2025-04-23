@@ -2,33 +2,32 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casino Spiele Auswahl</title>
+  <title>Spieleauswahl</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Wähle ein Spiel</h1>
-    <div id="game-selection">
-      <div class="game-card" onclick="alert('Slots öffnen...')">
-        <h2>🎰 Slots</h2>
+    <h1>Willkommen, <span id="user-name"></span>!</h1>
+    <h2>Wähle dein Spiel:</h2>
+
+    <div class="games-grid">
+      <div class="game-card">
+        <img src="assets/images/slot.png" alt="Slot Machine">
+        <h3>Slot Machine</h3>
       </div>
-      <div class="game-card" onclick="alert('Blackjack öffnen...')">
-        <h2>🃏 Blackjack</h2>
+      <div class="game-card">
+        <img src="assets/images/blackjack.png" alt="Blackjack">
+        <h3>Blackjack</h3>
       </div>
-      <div class="game-card" onclick="alert('Roulette öffnen...')">
-        <h2>🎡 Roulette</h2>
-      </div>
-      <div class="game-card" onclick="alert('Poker öffnen...')">
-        <h2>♠️ Poker</h2>
-      </div>
-      <div class="game-card" onclick="alert('Coin Flip öffnen...')">
-        <h2>🪙 Coin Flip</h2>
-      </div>
-      <div class="game-card" onclick="alert('Crash Game öffnen...')">
-        <h2>🚀 Crash</h2>
+      <div class="game-card">
+        <img src="assets/images/roulette.png" alt="Roulette">
+        <h3>Roulette</h3>
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('user-name').textContent = localStorage.getItem('nickname') || 'Gast';
+  </script>
 </body>
 </html>
