@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="games-container">
-    <h1>Wähle ein Spiel</h1>
+    <h1 id="greeting">Wähle ein Spiel</h1>
 
     <div class="game">
       <img src="slots-image.jpg" alt="Slots">
@@ -30,9 +30,15 @@
   </div>
 
   <script>
+    // Nickname beim Laden der Seite anzeigen
+    const nickname = new URLSearchParams(window.location.search).get('nickname');
+    if (nickname) {
+      document.getElementById('greeting').textContent = `Wähle ein Spiel, ${nickname}`;
+    }
+
+    // Spiel starten
     function startGame(gameName) {
-      // Beispielhafte Weiterleitung zur Spielseite
-      window.location.href = `game.html?game=${gameName}`;
+      window.location.href = `game.html?game=${gameName}&nickname=${encodeURIComponent(nickname)}`;
     }
   </script>
 </body>
